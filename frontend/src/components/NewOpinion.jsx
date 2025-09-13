@@ -1,6 +1,7 @@
 import { use } from "react"
 import { useActionState } from "react"
 import { OpinionsContext } from "../store/opinions-context"
+import Submit from "./Submit"
 
 export function NewOpinion() {
 
@@ -39,7 +40,7 @@ export function NewOpinion() {
 
   }
 
-  const [formState, formAction] = useActionState(shareOpinion, {errors: null , enteredValues : {title: ' ', body: '', userName: ''}})
+  const [formState, formAction , pending] = useActionState(shareOpinion, {errors: null , enteredValues : {title: ' ', body: '', userName: ''}})
 
   return (
     <div id="new-opinion">
@@ -69,9 +70,7 @@ export function NewOpinion() {
           </ul>
         ) }
 
-        <p className="actions">
-          <button type="submit">Submit</button>
-        </p>
+        <Submit />
       </form>
     </div>
   );
